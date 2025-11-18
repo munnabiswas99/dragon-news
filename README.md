@@ -57,10 +57,10 @@ npm run preview
 
 Images are located in the screenshots/ folder. Replace names below if your files differ.
 
-![Home screen](assets/screenshots/auth-layout-login.png)
-![Article list](assets/screenshots/auth-layout-register.png)
-![Article detail](assets/screenshots/home-layout.png)
-![Mobile view](assets/screenshots/news-details-layout.png)
+![Home screen](src/assets/screenshots/auth-layout-login.png)
+![Article list](src/assets/screenshots/auth-layout-register.png)
+![Article detail](src/assets/screenshots/home-layout.png)
+![Mobile view](src/assets/screenshots/news-details-layout.png)
 
 Use HTML for fixed width:
 
