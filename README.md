@@ -1,20 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-
 Dragoon News is a responsive front-end web application built with React that delivers real-time news articles across topics, with user authentication for personalized access. Built with modern web technologies (Vite, Tailwind, DaisyUI) and Firebase Authentication.
 
 ## Features
@@ -51,20 +34,20 @@ npm run preview
 - src/App.jsx — main React component
 - src/index.css — Tailwind / DaisyUI imports
 - src/firebase/** — Firebase init and auth helpers
-- screenshots/ — UI screenshots (4 images you added)
 
-## Screenshots
+## Design and Layout
 
-Images are located in the screenshots/ folder. Replace names below if your files differ.
+1. Login Page
+![Login Page](src/assets/screenshots/auth-layout-login.png)
 
-![Home screen](src/assets/screenshots/auth-layout-login.png)
-![Article list](src/assets/screenshots/auth-layout-register.png)
-![Article detail](src/assets/screenshots/home-layout.png)
-![Mobile view](src/assets/screenshots/news-details-layout.png)
+2. Registration Page
+![Registration Page](src/assets/screenshots/auth-layout-register.png)
 
-Use HTML for fixed width:
+3. Home Screen
+![Home Screen](src/assets/screenshots/home-layout.png)
 
-<img src="screenshots/screen1.png" alt="Home screen" width="720"/>
+4. News Card
+![News Card](src/assets/screenshots/news-details-layout.png)
 
 ## Firebase setup (local)
 1. Create a Firebase project and enable Authentication.
@@ -81,15 +64,3 @@ VITE_FIREBASE_PROJECT_ID=your_project
 1. Create a branch: git checkout -b feat/your-change
 2. Commit small changes with clear messages
 3. Open a PR and request review
-
-## Commit screenshots (PowerShell)
-
-```powershell
-git add screenshots/*
-git add README.md
-git commit -m "Add UI screenshots and update README"
-git push
-```
-
-## License
-Add a LICENSE file (e.g., MIT) or update this section to reflect your chosen license.
