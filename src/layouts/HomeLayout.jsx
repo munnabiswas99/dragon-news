@@ -1,12 +1,16 @@
 import React from 'react';
 import { Outlet } from 'react-router';
 import Header from '../components/Header';
+import LatestNews from '../components/LatestNews';
 
 const HomeLayout = () => {
     return (
         <div>
             <header>
                 <Header></Header>
+                <section>
+                    <LatestNews></LatestNews>
+                </section>
             </header>
 
             <main>
