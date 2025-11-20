@@ -1,7 +1,28 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContecxt } from "../../provider/AuthProvider";
 
 const Signup = () => {
+    const {createUser, setUser} = use(AuthContecxt);
+    const handleRegister = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        // console.log(name, photo, email, password);
+        createUser(email, password)
+        .then(result => {
+            const user = result.user;
+            // console.log(user);
+            setUser(user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
+
   return (
     <div>
       <div className="flex items-center justify-center p-10">
@@ -9,18 +30,17 @@ const Signup = () => {
           <h2 className="text-2xl font-semibold text-center p-5">
             Register your account
           </h2>
-          <div className="card-body">
+          <form onSubmit={handleRegister} className="card-body">
             <fieldset className="fieldset">
-
               <label className="label">Name</label>
-              <input type="text" className="input" placeholder="Name" />
+              <input type="text" className="input" name="name" placeholder="Name" required/>
               <label className="label">Photo Url</label>
-              <input type="text" className="input" placeholder="Photo Url" />
+              <input type="text" className="input" name="photo" placeholder="Photo Url" required/>
               <label className="label">Email</label>
-              <input type="email" className="input" placeholder="Email" />
+              <input type="email" className="input" name="email" placeholder="Email" required/>
               <label className="label">Password</label>
-              <input type="password" className="input" placeholder="Password" />
-              <button className="btn btn-neutral mt-4">Register</button>
+              <input type="password" className="input" name="password" placeholder="Password" required/>
+              <button type="submit" className="btn btn-neutral mt-4">Register</button>
               <p className="font-semibold text-gray-600 text-center pt-2">
                 Already Have An Account ?{" "}
                 <Link className="text-secondary" to="/auth/login">
@@ -28,7 +48,7 @@ const Signup = () => {
                 </Link>
               </p>
             </fieldset>
-          </div>
+          </form>
         </div>
       </div>
     </div>
