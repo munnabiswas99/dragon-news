@@ -5,10 +5,10 @@ import playImg from "../../assets/playground.png"
 
 const QZone = () => {
     return (
-        <div>
-            <h2 className='font-bold'>Q-Zone</h2>
-            <div className='space-y-5'>
-                <img src={swimmingImg} alt="" />
+        <div className='bg-base-200'>
+            <h2 className='font-bold p-5'>Q-Zone</h2>
+            <div className='space-y-5 p-10'>
+                <img className='' src={swimmingImg} alt="" />
                 <img src={classImg} alt="" />
                 <img src={playImg} alt="" />
             </div>
