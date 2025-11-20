@@ -62,7 +62,7 @@ const NewsCard = ({ news }) => {
       <div className="flex items-center justify-between mt-5 pt-3 border-t">
         {/* Rating */}
         <div className="flex items-center gap-1 text-orange-500">
-          {[...Array(5)].map((_, i) => (
+          {Array.from({length: rating.number}).map((_, i) => (
             <AiFillStar key={i} className="text-xl" />
           ))}
           <span className="ml-2 text-gray-700 font-semibold">
