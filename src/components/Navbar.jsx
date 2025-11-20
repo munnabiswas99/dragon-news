@@ -4,7 +4,7 @@ import user from "../assets/user.png"
 
 const Navbar = () => {
     return (
-        <div className='flex justify-between items-center'>
+        <div className='flex justify-between items-center mb-10'>
             <div></div>
             <div className='nav flex gap-5 text-accent'>
                 <NavLink to='/'>Home</NavLink>
