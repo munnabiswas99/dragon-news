@@ -1,13 +1,14 @@
 import React, { use } from 'react';
 import { AuthContecxt } from './AuthProvider';
 import { Navigate, useLocation } from 'react-router';
+import Loading from '../components/Loading';
 
 const PrivateRoute = ({children}) => {
     const {user, loading} = use(AuthContecxt);
     const location = useLocation();
     console.log(location);
     if(loading){
-        return <div className='flex items-center justify-center h-screen'><span className="loading loading-spinner text-error"></span></div>
+        return <Loading></Loading>
     }
     
     if(user && user.email){
