@@ -1,8 +1,10 @@
 import { FaShareAlt, FaBookmark, FaEye } from "react-icons/fa";
 import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
   const {
+    id,
     title,
     author,
     rating,
@@ -53,9 +55,9 @@ const NewsCard = ({ news }) => {
       {/* Details */}
       <p className="text-gray-700 leading-relaxed">
         {details.slice(0, 200)}...
-        <span className="text-blue-600 font-medium cursor-pointer">
+        <Link to={`/news-details/${id}`} className="text-blue-600 font-medium cursor-pointer">
           Read More
-        </span>
+        </Link>
       </p>
 
       {/* Footer */}

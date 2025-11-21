@@ -1,12 +1,19 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContecxt } from "../../provider/AuthProvider";
 
 const Signup = () => {
+    const [nameError, setNameError] = useState('');
     const {createUser, setUser} = use(AuthContecxt);
     const handleRegister = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
+        if(name.length < 5){
+            setNameError('Name must be more than 5 character')
+            return;
+        }else{
+            setNameError('');
+        }
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -34,6 +41,7 @@ const Signup = () => {
             <fieldset className="fieldset">
               <label className="label">Name</label>
               <input type="text" className="input" name="name" placeholder="Name" required/>
+              {nameError && <p className="font-bold text-error py-2">{nameError}</p>}
               <label className="label">Photo Url</label>
               <input type="text" className="input" name="photo" placeholder="Photo Url" required/>
               <label className="label">Email</label>

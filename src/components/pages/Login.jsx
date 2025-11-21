@@ -1,8 +1,12 @@
-import React, { use } from "react";
-import { Link } from "react-router";
+import React, { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContecxt } from "../../provider/AuthProvider";
 
 const Login = () => {
+    const [errorMsg, setErrorMsg] = useState('');
+    const location = useLocation();
+    console.log(location);
+    const navigate = useNavigate();
     const {login} = use(AuthContecxt);
     const handleLogin = (e) => {
         e.preventDefault();
@@ -10,10 +14,12 @@ const Login = () => {
         const password = e.target.password.value;
         login(email, password)
         .then(result => {
-            console.log(result.user)
+            // console.log(result.user)
+            navigate(`${location.state? location.state : '/'}`)
         })
         .catch(error => {
-            console.log(error.message)
+            // console.log(error.message)
+            setErrorMsg(error.message);
         })
     }
   return (
@@ -26,6 +32,7 @@ const Login = () => {
             <input name="email" type="email" className="input" placeholder="Email" />
             <label className="label">Password</label>
             <input name='password' type="password" className="input" placeholder="Password" />
+            {errorMsg && <p className="text-error py-2 font-bold">{errorMsg}</p>}
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
