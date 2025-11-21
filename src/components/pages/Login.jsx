@@ -5,7 +5,7 @@ import { AuthContecxt } from "../../provider/AuthProvider";
 const Login = () => {
     const [errorMsg, setErrorMsg] = useState('');
     const location = useLocation();
-    console.log(location);
+    // console.log(location);
     const navigate = useNavigate();
     const {login} = use(AuthContecxt);
     const handleLogin = (e) => {
