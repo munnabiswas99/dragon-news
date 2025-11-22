@@ -1,11 +1,72 @@
-import React from "react";
+import React, { use } from "react";
+import { AuthContecxt } from "../../provider/AuthProvider";
+import { useNavigate } from "react-router";
 
 const SocialLogin = () => {
+  const navigate = useNavigate();
+  const { googleSignIn, setUser, updateUser, githubSignIn } = use(AuthContecxt);
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);
+        updateUser({
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        })
+          .then(() => {
+            setUser({
+              ...user,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+            });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+            setUser(user);
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        const user = result.user;
+        // console.log(user);
+        updateUser({
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        })
+          .then(() => {
+            setUser({
+              ...user,
+              displayName: user.displayName,
+              photoURL: user.photoURL,
+            });
+            navigate("/");
+          })
+          .catch((error) => {
+            console.log(error);
+            setUser(user);
+          });
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div>
       <h1 className="font-bold mb-5">Login with</h1>
       <div className="flex flex-col gap-5 w-full">
-        <button className="btn bg-white text-black border-[#e5e5e5] hover:bg-secondary">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn bg-white text-black border-[#e5e5e5] hover:bg-secondary"
+        >
           <svg
             aria-label="Google logo"
             width="16"
@@ -35,7 +96,10 @@ const SocialLogin = () => {
           </svg>
           Login with Google
         </button>
-        <button className="btn bg-black text-white border-black hover:bg-secondary">
+        <button
+          onClick={handleGithubSignIn}
+          className="btn bg-black text-white border-black hover:bg-secondary"
+        >
           <svg
             aria-label="GitHub logo"
             width="16"
