@@ -12,7 +12,7 @@ const Navbar = () => {
         alert("You are logged out!");
       })
       .catch((error) => {
-        console.log(error.message);
+        alert(error.message);
       });
   };
   return (
@@ -28,7 +28,7 @@ const Navbar = () => {
       <div className="login-btn flex gap-5 items-center">
         <p className="font-semibold text-accent">{user?.displayName}</p>
         <img
-          className="w-11 h-11 rounded-full"
+          className="w-10 h-10 rounded-full"
           src={`${user ? user.photoURL : userimg}`}
           alt="invalid image url"
         />
