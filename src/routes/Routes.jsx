@@ -10,58 +10,61 @@ import PrivateRoute from "../provider/PrivateRoute";
 import Loading from "../components/Loading";
 
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element: <HomeLayout></HomeLayout>,
-        children: [
-            {
-                path: "/",
-                element: <Home></Home>
-            },
-            {
-                path: "/category/:id",
-                element: <CategoryNews></CategoryNews>,
-                loader: () => fetch("/news.json"),
-                hydrateFallbackElement: <Loading></Loading>
-            }
-        ]
-    },
+  {
+    path: "/",
+    element: <HomeLayout></HomeLayout>,
+    loader: () => fetch("/news.json"),
+    hydrateFallbackElement: <Loading></Loading>,
+    children: [
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/category/:id",
+        element: <CategoryNews></CategoryNews>,
+        loader: () => fetch("/news.json"),
+        hydrateFallbackElement: <Loading></Loading>,
+      },
+    ],
+  },
 
-    {
-        path: '/auth',
-        element: <AuthLayout></AuthLayout>,
-        children: [
-            {
-                path: '/auth/login',
-                element: <Login></Login>
-            },
+  {
+    path: "/auth",
+    element: <AuthLayout></AuthLayout>,
+    children: [
+      {
+        path: "/auth/login",
+        element: <Login></Login>,
+      },
 
-            {
-                path: '/auth/signup',
-                element: <Signup></Signup>
-            }
-        ]
-    },
+      {
+        path: "/auth/signup",
+        element: <Signup></Signup>,
+      },
+    ],
+  },
 
-    {
-        path: '/signup',
-        element: <h1>This is signup page</h1>
-    },
+  {
+    path: "/signup",
+    element: <h1>This is signup page</h1>,
+  },
 
-    {
-        path: '/news-details/:id',
-        element: <PrivateRoute>
-            <NewsDetails></NewsDetails>
-        </PrivateRoute>,
-        loader: () => fetch('/news.json'),
-        hydrateFallbackElement: <Loading></Loading>
-    },
+  {
+    path: "/news-details/:id",
+    element: (
+      <PrivateRoute>
+        <NewsDetails></NewsDetails>
+      </PrivateRoute>
+    ),
+    loader: () => fetch("/news.json"),
+    hydrateFallbackElement: <Loading></Loading>,
+  },
 
-    {
-        path: '/*',
-        element: <h2>404 Not Found</h2>
-    },
-
-])
+  {
+    path: "/*",
+    element: <h2>404 Not Found</h2>,
+  },
+]);
 
 export default router;
